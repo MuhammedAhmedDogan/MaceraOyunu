@@ -1,3 +1,7 @@
+package player;
+
+import gameChar.*;
+
 import java.util.Scanner;
 
 public class Player {

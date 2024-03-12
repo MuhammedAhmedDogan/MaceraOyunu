@@ -1,3 +1,6 @@
+package locations;
+
+import player.*;
 public class SafeHouse extends NormalLoc {
     public SafeHouse(Player player) {
         super(1, player, "Güvenli Ev", "Sağlığınızı doldurur.");

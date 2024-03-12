@@ -1,3 +1,6 @@
+package locations;
+
+import player.*;
 public class ToolStore extends NormalLoc {
 
     public ToolStore(Player player) {
@@ -15,8 +18,8 @@ public class ToolStore extends NormalLoc {
         boolean validInput = false;
         while (!validInput) {
             System.out.print("Seçiminiz : ");
-            if (input.hasNextInt()) {
-                int selectCase = input.nextInt();
+            if (Location.input.hasNextInt()) {
+                int selectCase = Location.input.nextInt();
                 validInput = true;
 
                 switch (selectCase) {
@@ -36,7 +39,7 @@ public class ToolStore extends NormalLoc {
 
             } else {
                 System.out.println("Hatalı giriş !");
-                input.next(); // Geçersiz girişi temizle
+                Location.input.next(); // Geçersiz girişi temizle
             }
         }
         return true;

@@ -1,5 +1,7 @@
-import java.util.Scanner;
+package locations;
 
+import player.*;
+import java.util.Scanner;
 public abstract class Location {
     private Player player;
     private String name, explanation;

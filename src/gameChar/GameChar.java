@@ -1,3 +1,5 @@
+package gameChar;
+
 public abstract class GameChar {
     private String name;
     private int id, damage, health, money;
