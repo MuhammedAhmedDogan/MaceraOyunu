@@ -1,7 +1,7 @@
-public abstract class NormalLoc extends Location{
+public abstract class NormalLoc extends Location {
 
-    public NormalLoc(Player player, String name) {
-        super(player, name);
+    public NormalLoc(int id, Player player, String name, String explanation) {
+        super(id, player, name, explanation);
     }
 
     @Override

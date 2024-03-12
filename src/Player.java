@@ -18,41 +18,46 @@ public class Player {
         for (GameChar gameChar : charList) {
             System.out.println("ID: " + gameChar.getId() +
                     "\tKarakter: " + gameChar.getName() +
-                    "\t Hasar: " + gameChar.getDamage() +
-                    "\t Sağlık: " + gameChar.getHealth() +
-                    "\t Para: " + gameChar.getMoney());
+                    "\tHasar: " + gameChar.getDamage() +
+                    "\tSağlık: " + gameChar.getHealth() +
+                    "\tPara: " + gameChar.getMoney());
         }
         System.out.println("--------------------------------------");
 
-        boolean isWrongID;
-        do {
+        boolean validInput = false;
+        while (!validInput) {
             System.out.print("Karakter ID'si giriniz : ");
-            int selectChar = input.nextInt();
-            isWrongID = false;
-            switch (selectChar) {
-                case 1:
-                    initPlayer(new Samurai());
-                    break;
-                case 2:
-                    initPlayer(new Archer());
-                    break;
-                case 3:
-                    initPlayer(new Knight());
-                    break;
-                default:
-                    System.out.println("Hatalı bir ID girdiniz !");
-                    isWrongID = true;
+            if (input.hasNextInt()) {
+                int selectChar = input.nextInt();
+                validInput = true;
+
+                switch (selectChar) {
+                    case 1:
+                        initPlayer(new Samurai());
+                        break;
+                    case 2:
+                        initPlayer(new Archer());
+                        break;
+                    case 3:
+                        initPlayer(new Knight());
+                        break;
+                    default:
+                        System.out.println("Hatalı bir ID girdiniz !");
+                        validInput = false;
+                }
+
+            } else {
+                System.out.println("Hatalı bir ID girdiniz !");
+                input.next(); // Geçersiz girişi temizle
             }
-        } while (isWrongID);
-        System.out.println("Seçilen Karakter : " + this.getCharName() +
+        }
+
+        System.out.println("\nSeçilen Karakter : " + this.getCharName() +
                 "\t Hasar: " + this.getDamage() +
                 "\t Sağlık: " + this.getHealth() +
                 "\t Para: " + this.getMoney());
     }
 
-    public void selectLoc(){
-        
-    }
 
     public void initPlayer(GameChar gameChar) {
         this.setDamage(gameChar.getDamage());
@@ -100,6 +105,5 @@ public class Player {
     public void setCharName(String charName) {
         this.charName = charName;
     }
-
 
 }
