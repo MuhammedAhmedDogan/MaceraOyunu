@@ -8,7 +8,7 @@ import java.util.Objects;
 public class ToolStore extends NormalLoc {
 
     public ToolStore(Player player) {
-        super(2, player, "Mağaza    ", "Silah veya Zırh satın alabilirsiniz.");
+        super(2, player, "Dükkan    ", "Silah veya Zırh satın alabilirsiniz.");
     }
 
     @Override

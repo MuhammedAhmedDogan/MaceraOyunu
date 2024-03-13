@@ -59,10 +59,7 @@ public class Player {
             }
         }
         System.out.println("--------------------------------------");
-        System.out.println("Seçilen Karakter : " + this.getCharName() +
-                "\t Hasar: " + this.getDamage() +
-                "\t Sağlık: " + this.getHealth() +
-                "\t Para: " + this.getMoney());
+        System.out.println("Seçilen Karakter : " + this.getCharName());
         System.out.println("--------------------------------------");
     }
 
