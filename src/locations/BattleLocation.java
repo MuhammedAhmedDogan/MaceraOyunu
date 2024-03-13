@@ -29,19 +29,24 @@ public abstract class BattleLocation extends Location {
                 if (this.combat(obsNumber)) {
                     System.out.println(this.getName() + " bölgesindeki tüm düşmanları yendiniz");
                     return true;
+                } else {
+                    if (this.getPlayer().getHealth() == 0) {
+                        System.out.println("ÖLDÜNÜZ");
+                        return false;
+                    } else {
+                        return true;
+                    }
                 }
-                break;
                 // Savaşma işlemi
             } else if (selectCase.equals("K")) {
-                System.out.println("Kaçış");
-                break;
+                System.out.println("\n" + this.getName() + " bölgesinden kaçtınız");
+                return true;
                 // Kaçma işlemi
             } else {
                 System.out.println("Hatalı giriş yaptınız !");
                 // Hatalı giriş
             }
         }
-        return true;
     }
 
     public boolean combat(int obsNumber) {
@@ -60,16 +65,20 @@ public abstract class BattleLocation extends Location {
                         this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
                         this.afterHit();
                     }
-                    // Savaşma işlemi
                 } else if (selectCombat.equals("K")) {
-                    System.out.println("Kaçış");
-                    break;
-                    // Kaçma işlemi
+                    System.out.println("\n" + this.getName() + " bölgesinden kaçtınız");
+                    return false;
                 } else {
                     System.out.println("Hatalı giriş yaptınız !");
-                    // Hatalı giriş
                 }
-
+            }
+            if (this.getObstacle().getHealth() < this.getPlayer().getHealth()) {
+                System.out.println("Düşmanı yendiniz.");
+                System.out.println(this.getObstacle().getMoney() + " para kazandınız.");
+                this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getMoney());
+                System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
+            } else {
+                return false;
             }
         }
         return true;
