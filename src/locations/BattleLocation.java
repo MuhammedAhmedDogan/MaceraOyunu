@@ -1,7 +1,7 @@
 package locations;
 
 import enemies.*;
-import player.Player;
+import player.*;
 
 import java.util.Random;
 
@@ -24,10 +24,12 @@ public abstract class BattleLocation extends Location {
 
         for (; ; ) {
             System.out.print("<S>avaş\t<K>aç\t:");
-            String selectCase = input.nextLine();
-            selectCase = selectCase.toUpperCase();
+            String selectCase = input.nextLine().toUpperCase();
             if (selectCase.equals("S")) {
-                System.out.println("Savaş işlemleri olacak");
+                if (this.combat(obsNumber)) {
+                    System.out.println(this.getName() + " bölgesindeki tüm düşmanları yendiniz");
+                    return true;
+                }
                 break;
                 // Savaşma işlemi
             } else if (selectCase.equals("K")) {
@@ -39,8 +41,52 @@ public abstract class BattleLocation extends Location {
                 // Hatalı giriş
             }
         }
-
         return true;
+    }
+
+    public boolean combat(int obsNumber) {
+        for (int i = 1; i <= obsNumber; i++) {
+            this.getObstacle().setHealth(this.getObstacle().getStartHealth());
+            playerStats(i);
+            while (this.getPlayer().getHealth() > 0 && this.getObstacle().getHealth() > 0) {
+                System.out.print("<V>ur  veya  <K>aç  : ");
+                String selectCombat = input.nextLine().toUpperCase();
+                if (selectCombat.equals("V")) {
+                    System.out.println("Siz vurdunuz");
+                    this.getObstacle().setHealth(Math.max(0, this.getObstacle().getHealth() - this.getPlayer().getTotalDamage()));
+                    this.afterHit();
+                    if (this.getObstacle().getHealth() > 0) {
+                        System.out.println(this.getObstacle().getName() + " vurdu");
+                        this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
+                        this.afterHit();
+                    }
+                    // Savaşma işlemi
+                } else if (selectCombat.equals("K")) {
+                    System.out.println("Kaçış");
+                    break;
+                    // Kaçma işlemi
+                } else {
+                    System.out.println("Hatalı giriş yaptınız !");
+                    // Hatalı giriş
+                }
+
+            }
+        }
+        return true;
+    }
+
+    public void afterHit() {
+        System.out.println("Canınız : " + this.getPlayer().getHealth());
+        System.out.println(this.getObstacle().getName() + " Canı: " + this.getObstacle().getHealth());
+        System.out.println();
+    }
+
+    public void playerStats(int i) {
+        System.out.println("Oyuncu değerleri:");
+        this.getPlayer().printInfo();
+        System.out.println("----------------------------");
+        System.out.println(i + ". " + this.getObstacle().getName() + " değerleri:");
+        this.getObstacle().printInfo();
     }
 
     public int randomObstacleNumber() {

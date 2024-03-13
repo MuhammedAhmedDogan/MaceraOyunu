@@ -1,14 +1,20 @@
 package enemies;
 
 public class Obstacle {
-    private int id, damage, health;
+    private int id, damage, health, startHealth, money;
     private String name;
 
-    public Obstacle(int id, String name, int damage, int health) {
+    public Obstacle(int id, String name, int damage, int health, int money) {
         this.id = id;
         this.damage = damage;
         this.health = health;
+        this.startHealth = health;
         this.name = name;
+        this.money = money;
+    }
+
+    public void printInfo() {
+        System.out.println("\nHasar: " + this.getDamage() + "\tSağlık: " + this.getHealth() + "\tPara: " + this.getMoney());
     }
 
     public int getId() {
@@ -41,5 +47,21 @@ public class Obstacle {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getStartHealth() {
+        return startHealth;
+    }
+
+    public void setStartHealth(int startHealth) {
+        this.startHealth = startHealth;
     }
 }
