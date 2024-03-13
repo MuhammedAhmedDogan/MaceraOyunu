@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Player {
     private int damage, health, money;
     private String name, charName;
-    Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
 
     public Player(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Player {
 
     public void selectChar() {
         GameChar[] charList = {new Samurai(), new Archer(), new Knight()};
-
+        System.out.println("Lütfen bir karakter seçiniz.");
         System.out.println("--------------------------------------");
         System.out.println("Karakterler :");
         for (GameChar gameChar : charList) {
@@ -55,15 +55,16 @@ public class Player {
                 input.next(); // Geçersiz girişi temizle
             }
         }
-
-        System.out.println("\nSeçilen Karakter : " + this.getCharName() +
+        System.out.println("--------------------------------------");
+        System.out.println("Seçilen Karakter : " + this.getCharName() +
                 "\t Hasar: " + this.getDamage() +
                 "\t Sağlık: " + this.getHealth() +
                 "\t Para: " + this.getMoney());
+        System.out.println("--------------------------------------");
     }
 
 
-    public void initPlayer(GameChar gameChar) {
+    private void initPlayer(GameChar gameChar) {
         this.setDamage(gameChar.getDamage());
         this.setHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
