@@ -37,6 +37,7 @@ public abstract class BattleLocation extends Location {
                 break;
                 // Kaçma işlemi
             } else {
+                System.out.println("Hatalı giriş yaptınız !");
                 // Hatalı giriş
             }
         }
