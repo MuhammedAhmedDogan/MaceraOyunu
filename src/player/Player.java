@@ -1,6 +1,7 @@
 package player;
 
 import gameChar.*;
+import items.*;
 
 import java.util.Scanner;
 
@@ -74,11 +75,12 @@ public class Player {
     }
 
     public void printInfo() {
-        System.out.println("\n" + this.name + " - " + this.charName +
-                "\nSilahınız: " + this.getInventory().getWeapon().getName() +
-                "\tHasarınız: " + this.getDamage() +
-                "\tSağlığınız: " + this.getHealth() +
-                "\tParanız: " + this.getMoney() + "\n");
+        System.out.println("\nSilah: " + this.getInventory().getWeapon().getName() +
+                "\tZırh: "+this.getInventory().getArmor().getName()+
+                "\t\tHasar: " + this.getDamage() +
+                "\t  Bloklama: "+this.getInventory().getArmor().getBlock()+
+                "\t\tSağlık: " + this.getHealth() +
+                "\t\tPara: " + this.getMoney() + "\n");
     }
 
     public int getDamage() {
