@@ -36,7 +36,8 @@ public class Game {
         for (Location printLocation : locationList) {
             System.out.println(printLocation.getId() +
                     "-\t" + printLocation.getName() +
-                    " :\t" + printLocation.getExplanation());
+                     printLocation.getExplanation()+
+                    "\t"+printLocation.getAward());
         }
         System.out.println();
 

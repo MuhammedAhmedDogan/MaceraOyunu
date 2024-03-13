@@ -5,6 +5,6 @@ import player.Player;
 
 public class River extends BattleLocation{
     public River(Player player) {
-        super(5, player, "Nehir     ", "Ayı yuvası", new Bear(), "Su",2);
+        super(5, player, "Nehir", "     :\tAyı yuvası    ", new Bear(), "Ödül: Su",2);
     }
 }

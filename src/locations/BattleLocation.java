@@ -7,13 +7,11 @@ import java.util.Random;
 
 public abstract class BattleLocation extends Location {
     private Obstacle obstacle;
-    private String award;
     private int maxObstacle;
 
     public BattleLocation(int id, Player player, String name, String explanation, Obstacle obstacle, String award, int maxObstacle) {
-        super(id, player, name, explanation);
+        super(id, player, name, explanation, award);
         this.obstacle = obstacle;
-        this.award = award;
         this.maxObstacle = maxObstacle;
 
     }
@@ -21,8 +19,8 @@ public abstract class BattleLocation extends Location {
     @Override
     public boolean onLocation() {
         int obsNumber = this.randomObstacleNumber();
-        System.out.println("\nŞu an buradasınız: " + this.getName());
-        System.out.println("Dikkatli ol burada " + obsNumber + " tane " + this.getObstacle().getName() + " yaşıyor.");
+        System.out.println("\n----------- " + this.getName() + " -----------");
+        System.out.println("Dikkatli ol burada şu an " + obsNumber + " tane " + this.getObstacle().getName() + " var.\n");
 
         for (; ; ) {
             System.out.print("<S>avaş\t<K>aç\t:");
@@ -56,14 +54,6 @@ public abstract class BattleLocation extends Location {
 
     public void setObstacle(Obstacle obstacle) {
         this.obstacle = obstacle;
-    }
-
-    public String getAward() {
-        return award;
-    }
-
-    public void setAward(String award) {
-        this.award = award;
     }
 
     public int getMaxObstacle() {
