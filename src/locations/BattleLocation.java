@@ -20,8 +20,9 @@ public abstract class BattleLocation extends Location {
 
     @Override
     public boolean onLocation() {
+        int obsNumber = this.randomObstacleNumber();
         System.out.println("Şu an buradasınız: " + this.getName());
-        System.out.println("Dikkatli ol burada " + this.getObstacle().getName() + " yaşıyor.");
+        System.out.println("Dikkatli ol burada " + obsNumber + " tane " + this.getObstacle().getName() + " yaşıyor.");
         return true;
     }
 
