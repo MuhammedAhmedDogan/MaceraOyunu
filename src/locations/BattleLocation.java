@@ -21,8 +21,26 @@ public abstract class BattleLocation extends Location {
     @Override
     public boolean onLocation() {
         int obsNumber = this.randomObstacleNumber();
-        System.out.println("Şu an buradasınız: " + this.getName());
+        System.out.println("\nŞu an buradasınız: " + this.getName());
         System.out.println("Dikkatli ol burada " + obsNumber + " tane " + this.getObstacle().getName() + " yaşıyor.");
+
+        for (; ; ) {
+            System.out.print("<S>avaş\t<K>aç\t:");
+            String selectCase = input.nextLine();
+            selectCase = selectCase.toUpperCase();
+            if (selectCase.equals("S")) {
+                System.out.println("Savaş işlemleri olacak");
+                break;
+                // Savaşma işlemi
+            } else if (selectCase.equals("K")) {
+                System.out.println("Kaçış");
+                break;
+                // Kaçma işlemi
+            } else {
+                // Hatalı giriş
+            }
+        }
+
         return true;
     }
 
