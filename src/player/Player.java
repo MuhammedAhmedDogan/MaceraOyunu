@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Player {
     private int damage, health, money;
     private String name, charName;
+    private Inventory inventory;
     private final Scanner input = new Scanner(System.in);
 
     public Player(String name) {
         this.name = name;
+        this.inventory = new Inventory();
     }
 
 
@@ -71,8 +73,16 @@ public class Player {
         this.setCharName(gameChar.getName());
     }
 
+    public void printInfo() {
+        System.out.println("\n" + this.name + " - " + this.charName +
+                "\nSilahınız: " + this.getInventory().getWeapon().getName() +
+                "\tHasarınız: " + this.getDamage() +
+                "\tSağlığınız: " + this.getHealth() +
+                "\tParanız: " + this.getMoney() + "\n");
+    }
+
     public int getDamage() {
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage) {
@@ -111,4 +121,11 @@ public class Player {
         this.charName = charName;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 }

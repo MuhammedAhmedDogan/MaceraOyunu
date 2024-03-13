@@ -12,6 +12,7 @@ public class Game {
         player.selectChar();
 
         while (true) {
+            player.printInfo();
             this.selectLocation();
 
             if (!location.onLocation()){
