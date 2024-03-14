@@ -36,8 +36,8 @@ public class Game {
         for (Location printLocation : locationList) {
             System.out.println(printLocation.getId() +
                     "-\t" + printLocation.getName() +
-                     printLocation.getExplanation()+
-                    "\t"+printLocation.getAward());
+                    printLocation.getExplanation() +
+                    "\t" + printLocation.getAward());
         }
         System.out.println();
 
@@ -56,10 +56,20 @@ public class Game {
                         location = locationList[1];
                         break;
                     case 3:
-                        location = locationList[2];
+                        if (player.isFood()) {
+                            System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
+                            validInput = false;
+                        } else {
+                            location = locationList[2];
+                        }
                         break;
                     case 4:
-                        location = locationList[3];
+                        if (player.isFirewood()) {
+                            System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
+                            validInput = false;
+                        } else {
+                            location = locationList[3];
+                        }
                         break;
                     case 5:
                         location = locationList[4];

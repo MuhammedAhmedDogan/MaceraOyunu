@@ -6,10 +6,14 @@ import items.*;
 import java.util.Scanner;
 
 public class Player {
-    private int damage, health,startHealth, money;
+    private int damage, health, startHealth, money;
     private String name, charName;
     private Inventory inventory;
     private final Scanner input = new Scanner(System.in);
+    private boolean firewood = false;
+    private boolean water = false;
+    private boolean food = true;
+
 
     public Player(String name) {
         this.name = name;
@@ -74,14 +78,14 @@ public class Player {
 
     public void printInfo() {
         System.out.println("Silah: " + this.getInventory().getWeapon().getName() +
-                "\tZırh: "+this.getInventory().getArmor().getName()+
+                "\tZırh: " + this.getInventory().getArmor().getName() +
                 "\t\tHasar: " + this.getTotalDamage() +
-                "\t  Bloklama: "+this.getInventory().getArmor().getBlock()+
+                "\t  Bloklama: " + this.getInventory().getArmor().getBlock() +
                 "\t\tSağlık: " + this.getHealth() +
                 "\t\tPara: " + this.getMoney());
     }
 
-    public int getTotalDamage(){
+    public int getTotalDamage() {
         return this.damage;
     }
 
@@ -139,5 +143,29 @@ public class Player {
 
     public void setStartHealth(int startHealth) {
         this.startHealth = startHealth;
+    }
+
+    public boolean isFirewood() {
+        return firewood;
+    }
+
+    public void setFirewood(boolean firewood) {
+        this.firewood = firewood;
+    }
+
+    public boolean isWater() {
+        return water;
+    }
+
+    public void setWater(boolean water) {
+        this.water = water;
+    }
+
+    public boolean isFood() {
+        return food;
+    }
+
+    public void setFood(boolean food) {
+        this.food = food;
     }
 }
