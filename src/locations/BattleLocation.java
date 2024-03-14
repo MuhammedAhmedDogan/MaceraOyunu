@@ -74,7 +74,7 @@ public abstract class BattleLocation extends Location {
         for (int i = 1; i <= obsNumber; i++) {
             this.getObstacle().setHealth(this.getObstacle().getStartHealth());
             this.getObstacle().setDamage(this.getObstacle().getDamage());
-            playerStats(i);
+            this.printStats(i);
             while (this.getPlayer().getHealth() > 0 && this.getObstacle().getHealth() > 0) {
                 System.out.print("<V>ur  veya  <K>aç  : ");
                 String selectCombat = input.nextLine().toUpperCase();
@@ -128,7 +128,7 @@ public abstract class BattleLocation extends Location {
         System.out.println();
     }
 
-    public void playerStats(int i) {
+    public void printStats(int i) {
         System.out.println("\nOyuncu değerleri:");
         this.getPlayer().printInfo();
         System.out.println("----------------------------");
@@ -142,32 +142,39 @@ public abstract class BattleLocation extends Location {
         if (chanceDrop < 15.0) {
             double chanceWeapon = random.nextDouble()*100;
             if (chanceWeapon<20){
-                // Tüfek
+                System.out.println("---- Düşmandan Tüfek çıktı ----");
             } else if (chanceWeapon<50) {
-                // Kılıç
+                System.out.println("---- Düşmandan Kılıç çıktı ----");
             }else {
-                // Tabanca
+                System.out.println("---- Düşmandan Tabanca çıktı ----");
             }
         } else if (chanceDrop < 30.0) {
             double chanceArmor = random.nextDouble()*100;
             if (chanceArmor<20){
-                // Ağır
+                System.out.println("---- Düşmandan Ağır Zırh çıktı ----");
             } else if (chanceArmor<50) {
-                // Orta
+                System.out.println("---- Düşmandan Orta Zırh çıktı ----");
             }else {
-                // Hafif
+                System.out.println("---- Düşmandan Hafif Zırh çıktı ----");
             }
         } else if (chanceDrop<55.0) {
             double chanceMoney = random.nextDouble()*100;
+            System.out.println("---- Düşmandan Para çıktı ----");
             if (chanceMoney<20){
-                // 10
+                System.out.println(10 + " para kazandınız.");
+                this.getPlayer().setMoney(this.getPlayer().getMoney() + 10);
+                System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
             } else if (chanceMoney<50) {
-                // 5
+                System.out.println(5 + " para kazandınız.");
+                this.getPlayer().setMoney(this.getPlayer().getMoney() + 5);
+                System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
             }else {
-                // 1
+                System.out.println(1 + " para kazandınız.");
+                this.getPlayer().setMoney(this.getPlayer().getMoney() + 1);
+                System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
             }
         } else {
-            // hiçbir şey kazanamama
+            System.out.println("Bu düşmandan hiçbir eşya çıkmadı.");
         }
     }
 
