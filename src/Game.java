@@ -72,7 +72,12 @@ public class Game {
                         }
                         break;
                     case 5:
-                        location = locationList[4];
+                        if (player.isWater()) {
+                            System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
+                            validInput = false;
+                        } else {
+                            location = locationList[4];
+                        }
                         break;
                     default:
                         System.out.println("Hatalı bir bölge numarası girdiniz !");

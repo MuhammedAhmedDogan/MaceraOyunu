@@ -10,10 +10,9 @@ public class Player {
     private String name, charName;
     private Inventory inventory;
     private final Scanner input = new Scanner(System.in);
+    private boolean food = false;
     private boolean firewood = false;
     private boolean water = false;
-    private boolean food = true;
-
 
     public Player(String name) {
         this.name = name;

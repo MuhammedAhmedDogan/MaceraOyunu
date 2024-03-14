@@ -30,6 +30,12 @@ public abstract class BattleLocation extends Location {
                     System.out.println("--------------------------------------");
                     System.out.println(this.getName() + " bölgesindeki tüm düşmanları yendiniz");
                     System.out.println("--------------------------------------");
+                    if (this.getId() == 3)
+                        this.getPlayer().setFood(true);
+                    if (this.getId()==4)
+                        this.getPlayer().setFirewood(true);
+                    if (this.getId()==5)
+                        this.getPlayer().setWater(true);
                     return true;
                 } else {
                     if (this.getPlayer().getHealth() == 0) {
