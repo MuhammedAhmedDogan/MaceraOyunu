@@ -88,7 +88,7 @@ public abstract class BattleLocation extends Location {
                             this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
                             this.afterHit();
                         }
-                    }else {
+                    } else {
                         System.out.println(this.getObstacle().getName() + " vurdu");
                         this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
                         this.afterHit();
@@ -107,9 +107,14 @@ public abstract class BattleLocation extends Location {
             }
             if (this.getObstacle().getHealth() < this.getPlayer().getHealth()) {
                 System.out.println("Düşmanı yendiniz.");
-                System.out.println(this.getObstacle().getMoney() + " para kazandınız.");
-                this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getMoney());
-                System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
+                if (this.getObstacle().getId() == 4) {
+                    randomItemDrop();
+                } else {
+                    System.out.println(this.getObstacle().getMoney() + " para kazandınız.");
+                    this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getMoney());
+                    System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
+                }
+
             } else {
                 return false;
             }
@@ -129,6 +134,41 @@ public abstract class BattleLocation extends Location {
         System.out.println("----------------------------");
         System.out.println(i + ". " + this.getObstacle().getName() + " değerleri:");
         this.getObstacle().printInfo();
+    }
+
+    public void randomItemDrop() {
+        Random random = new Random();
+        double chanceDrop = random.nextDouble() * 100;
+        if (chanceDrop < 15.0) {
+            double chanceWeapon = random.nextDouble()*100;
+            if (chanceWeapon<20){
+                // Tüfek
+            } else if (chanceWeapon<50) {
+                // Kılıç
+            }else {
+                // Tabanca
+            }
+        } else if (chanceDrop < 30.0) {
+            double chanceArmor = random.nextDouble()*100;
+            if (chanceArmor<20){
+                // Ağır
+            } else if (chanceArmor<50) {
+                // Orta
+            }else {
+                // Hafif
+            }
+        } else if (chanceDrop<55.0) {
+            double chanceMoney = random.nextDouble()*100;
+            if (chanceMoney<20){
+                // 10
+            } else if (chanceMoney<50) {
+                // 5
+            }else {
+                // 1
+            }
+        } else {
+            // hiçbir şey kazanamama
+        }
     }
 
     public int randomObstacleNumber() {
