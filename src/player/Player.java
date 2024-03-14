@@ -13,6 +13,7 @@ public class Player {
     private boolean food = false;
     private boolean firewood = false;
     private boolean water = false;
+    private boolean trophy = false;
 
     public Player(String name) {
         this.name = name;
@@ -63,6 +64,8 @@ public class Player {
         }
         System.out.println("--------------------------------------");
         System.out.println("Seçilen Karakter : " + this.getCharName());
+        System.out.println("--------------------------------------");
+        System.out.println("Oyunu bitirmek için Yemek, Su ve Odun kazanıp Güvenli Ev'e dön.");
         System.out.println("--------------------------------------");
     }
 
@@ -166,5 +169,13 @@ public class Player {
 
     public void setFood(boolean food) {
         this.food = food;
+    }
+
+    public boolean isTrophy() {
+        return trophy;
+    }
+
+    public void setTrophy(boolean trophy) {
+        this.trophy = trophy;
     }
 }

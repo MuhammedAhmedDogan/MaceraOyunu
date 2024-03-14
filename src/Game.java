@@ -7,7 +7,7 @@ public class Game {
     private final Scanner input = new Scanner(System.in);
     Player player = new Player(playerName());
     Location location = null;
-    Location[] locationList = {new SafeHouse(player), new ToolStore(player), new Cave(player), new Forest(player), new River(player)};
+    Location[] locationList = {new SafeHouse(player), new ToolStore(player), new Cave(player), new Forest(player), new River(player), new Mine(player)};
 
     public void start() {
         player.selectChar();
@@ -77,6 +77,14 @@ public class Game {
                             validInput = false;
                         } else {
                             location = locationList[4];
+                        }
+                        break;
+                    case 6:
+                        if (player.isTrophy()) {
+                            System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
+                            validInput = false;
+                        } else {
+                            location = locationList[5];
                         }
                         break;
                     default:

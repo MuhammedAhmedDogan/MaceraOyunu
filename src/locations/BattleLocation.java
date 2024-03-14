@@ -29,13 +29,26 @@ public abstract class BattleLocation extends Location {
                 if (this.combat(obsNumber)) {
                     System.out.println("--------------------------------------");
                     System.out.println(this.getName() + " bölgesindeki tüm düşmanları yendiniz");
-                    System.out.println("--------------------------------------");
-                    if (this.getId() == 3)
+                    if (this.getId() == 3) {
+                        System.out.println("*** Yemek kazandınız ***");
+                        System.out.println("--------------------------------------");
                         this.getPlayer().setFood(true);
-                    if (this.getId()==4)
+                    }
+                    if (this.getId() == 4) {
+                        System.out.println("*** Odun kazandınız ***");
+                        System.out.println("--------------------------------------");
                         this.getPlayer().setFirewood(true);
-                    if (this.getId()==5)
+                    }
+                    if (this.getId() == 5) {
+                        System.out.println("*** Su kazandınız ***");
+                        System.out.println("--------------------------------------");
                         this.getPlayer().setWater(true);
+                    }
+                    if (this.getId()==6){
+                        System.out.println("*** Ganimeti topladınız ***");
+                        System.out.println("--------------------------------------");
+                        this.getPlayer().setTrophy(true);
+                    }
                     return true;
                 } else {
                     if (this.getPlayer().getHealth() == 0) {
