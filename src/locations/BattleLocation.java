@@ -44,7 +44,7 @@ public abstract class BattleLocation extends Location {
                         System.out.println("--------------------------------------");
                         this.getPlayer().getInventory().setWater(true);
                     }
-                    if (this.getId()==6){
+                    if (this.getId() == 6) {
                         System.out.println("*** Ganimeti topladınız ***");
                         System.out.println("--------------------------------------");
                         this.getPlayer().getInventory().setTrophy(true);
@@ -79,13 +79,24 @@ public abstract class BattleLocation extends Location {
                 System.out.print("<V>ur  veya  <K>aç  : ");
                 String selectCombat = input.nextLine().toUpperCase();
                 if (selectCombat.equals("V")) {
-                    System.out.println("\nSiz vurdunuz");
-                    this.getObstacle().setHealth(Math.max(0, this.getObstacle().getHealth() - this.getPlayer().getTotalDamage()));
-                    this.afterHit();
-                    if (this.getObstacle().getHealth() > 0) {
+                    if (this.isFirstAttack()) {
+                        System.out.println("Siz vurdunuz");
+                        this.getObstacle().setHealth(Math.max(0, this.getObstacle().getHealth() - this.getPlayer().getTotalDamage()));
+                        this.afterHit();
+                        if (this.getObstacle().getHealth() > 0) {
+                            System.out.println(this.getObstacle().getName() + " vurdu");
+                            this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
+                            this.afterHit();
+                        }
+                    }else {
                         System.out.println(this.getObstacle().getName() + " vurdu");
                         this.getPlayer().setHealth(Math.max(0, this.getPlayer().getHealth() - Math.max(0, this.getObstacle().getDamage() - this.getPlayer().getInventory().getArmor().getBlock())));
                         this.afterHit();
+                        if (this.getPlayer().getHealth() > 0) {
+                            System.out.println("Siz vurdunuz");
+                            this.getObstacle().setHealth(Math.max(0, this.getObstacle().getHealth() - this.getPlayer().getTotalDamage()));
+                            this.afterHit();
+                        }
                     }
                 } else if (selectCombat.equals("K")) {
                     System.out.println("\n" + this.getName() + " bölgesinden kaçtınız");
@@ -123,6 +134,11 @@ public abstract class BattleLocation extends Location {
     public int randomObstacleNumber() {
         Random random = new Random();
         return random.nextInt(this.maxObstacle) + 1;
+    }
+
+    public boolean isFirstAttack() {
+        Random random = new Random();
+        return random.nextBoolean();
     }
 
     public Obstacle getObstacle() {
