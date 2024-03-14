@@ -1,9 +1,11 @@
 package locations;
 
 import enemies.*;
+import items.Armor;
 import items.Weapon;
 import player.*;
 
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class BattleLocation extends Location {
@@ -141,36 +143,77 @@ public abstract class BattleLocation extends Location {
         Random random = new Random();
         double chanceDrop = random.nextDouble() * 100;
         if (chanceDrop < 15.0) {
-            double chanceWeapon = random.nextDouble()*100;
-            if (chanceWeapon<20){
+            double chanceWeapon = random.nextDouble() * 100;
+            if (chanceWeapon < 20) {
                 System.out.println("---- Düşmandan Tüfek çıktı ----");
-                this.getPlayer().getInventory().setWeapon(Weapon.getWeaponObjID(3)); // EN SON BURA YAZILDI.
-            } else if (chanceWeapon<50) {
+                Weapon droppedWeapon = Weapon.getWeaponObjID(3);
+                if (this.getPlayer().getInventory().getWeapon().getDamage() >= Objects.requireNonNull(droppedWeapon).getDamage()) {
+                    System.out.println("Kullandığınız silah bu silah ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Tüfek kuşanıldı.");
+                    this.getPlayer().getInventory().setWeapon(droppedWeapon);
+                }
+            } else if (chanceWeapon < 50) {
                 System.out.println("---- Düşmandan Kılıç çıktı ----");
-            }else {
+                Weapon droppedWeapon = Weapon.getWeaponObjID(2);
+                if (this.getPlayer().getInventory().getWeapon().getDamage() >= Objects.requireNonNull(droppedWeapon).getDamage()) {
+                    System.out.println("Kullandığınız silah bu silah ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Kılıç kuşanıldı.");
+                    this.getPlayer().getInventory().setWeapon(droppedWeapon);
+                }
+            } else {
                 System.out.println("---- Düşmandan Tabanca çıktı ----");
+                Weapon droppedWeapon = Weapon.getWeaponObjID(1);
+                if (this.getPlayer().getInventory().getWeapon().getDamage() >= Objects.requireNonNull(droppedWeapon).getDamage()) {
+                    System.out.println("Kullandığınız silah bu silah ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Tabanca kuşanıldı.");
+                    this.getPlayer().getInventory().setWeapon(droppedWeapon);
+                }
             }
         } else if (chanceDrop < 30.0) {
-            double chanceArmor = random.nextDouble()*100;
-            if (chanceArmor<20){
+            double chanceArmor = random.nextDouble() * 100;
+            if (chanceArmor < 20) {
                 System.out.println("---- Düşmandan Ağır Zırh çıktı ----");
-            } else if (chanceArmor<50) {
+                Armor droppedArmor = Armor.getArmorObjID(3);
+                if (this.getPlayer().getInventory().getArmor().getBlock() >= Objects.requireNonNull(droppedArmor).getBlock()) {
+                    System.out.println("Kullandığınız zırh bu zırh ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Ağır Zırh kuşanıldı.");
+                    this.getPlayer().getInventory().setArmor(droppedArmor);
+                }
+            } else if (chanceArmor < 50) {
                 System.out.println("---- Düşmandan Orta Zırh çıktı ----");
-            }else {
+                Armor droppedArmor = Armor.getArmorObjID(2);
+                if (this.getPlayer().getInventory().getArmor().getBlock() >= Objects.requireNonNull(droppedArmor).getBlock()) {
+                    System.out.println("Kullandığınız zırh bu zırh ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Orta Zırh kuşanıldı.");
+                    this.getPlayer().getInventory().setArmor(droppedArmor);
+                }
+            } else {
                 System.out.println("---- Düşmandan Hafif Zırh çıktı ----");
+                Armor droppedArmor = Armor.getArmorObjID(1);
+                if (this.getPlayer().getInventory().getArmor().getBlock() >= Objects.requireNonNull(droppedArmor).getBlock()) {
+                    System.out.println("Kullandığınız zırh bu zırh ile aynı veya daha güçlü olduğu için alınmadı.");
+                } else {
+                    System.out.println("Hafif Zırh kuşanıldı.");
+                    this.getPlayer().getInventory().setArmor(droppedArmor);
+                }
             }
-        } else if (chanceDrop<55.0) {
-            double chanceMoney = random.nextDouble()*100;
+        } else if (chanceDrop < 55.0) {
+            double chanceMoney = random.nextDouble() * 100;
             System.out.println("---- Düşmandan Para çıktı ----");
-            if (chanceMoney<20){
+            if (chanceMoney < 20) {
                 System.out.println(10 + " para kazandınız.");
                 this.getPlayer().setMoney(this.getPlayer().getMoney() + 10);
                 System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
-            } else if (chanceMoney<50) {
+            } else if (chanceMoney < 50) {
                 System.out.println(5 + " para kazandınız.");
                 this.getPlayer().setMoney(this.getPlayer().getMoney() + 5);
                 System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
-            }else {
+            } else {
                 System.out.println(1 + " para kazandınız.");
                 this.getPlayer().setMoney(this.getPlayer().getMoney() + 1);
                 System.out.println("Güncel paranız: " + this.getPlayer().getMoney());
