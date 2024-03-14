@@ -1,6 +1,7 @@
 package locations;
 
 import enemies.*;
+import items.Weapon;
 import player.*;
 
 import java.util.Random;
