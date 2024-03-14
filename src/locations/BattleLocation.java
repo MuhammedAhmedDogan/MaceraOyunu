@@ -65,7 +65,7 @@ public abstract class BattleLocation extends Location {
                 System.out.print("<V>ur  veya  <K>aç  : ");
                 String selectCombat = input.nextLine().toUpperCase();
                 if (selectCombat.equals("V")) {
-                    System.out.println("Siz vurdunuz");
+                    System.out.println("\nSiz vurdunuz");
                     this.getObstacle().setHealth(Math.max(0, this.getObstacle().getHealth() - this.getPlayer().getTotalDamage()));
                     this.afterHit();
                     if (this.getObstacle().getHealth() > 0) {
