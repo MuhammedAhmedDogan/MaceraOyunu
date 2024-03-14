@@ -32,22 +32,22 @@ public abstract class BattleLocation extends Location {
                     if (this.getId() == 3) {
                         System.out.println("*** Yemek kazandınız ***");
                         System.out.println("--------------------------------------");
-                        this.getPlayer().setFood(true);
+                        this.getPlayer().getInventory().setFood(true);
                     }
                     if (this.getId() == 4) {
                         System.out.println("*** Odun kazandınız ***");
                         System.out.println("--------------------------------------");
-                        this.getPlayer().setFirewood(true);
+                        this.getPlayer().getInventory().setFirewood(true);
                     }
                     if (this.getId() == 5) {
                         System.out.println("*** Su kazandınız ***");
                         System.out.println("--------------------------------------");
-                        this.getPlayer().setWater(true);
+                        this.getPlayer().getInventory().setWater(true);
                     }
                     if (this.getId()==6){
                         System.out.println("*** Ganimeti topladınız ***");
                         System.out.println("--------------------------------------");
-                        this.getPlayer().setTrophy(true);
+                        this.getPlayer().getInventory().setTrophy(true);
                     }
                     return true;
                 } else {
@@ -73,6 +73,7 @@ public abstract class BattleLocation extends Location {
     public boolean combat(int obsNumber) {
         for (int i = 1; i <= obsNumber; i++) {
             this.getObstacle().setHealth(this.getObstacle().getStartHealth());
+            this.getObstacle().setDamage(this.getObstacle().getDamage());
             playerStats(i);
             while (this.getPlayer().getHealth() > 0 && this.getObstacle().getHealth() > 0) {
                 System.out.print("<V>ur  veya  <K>aç  : ");

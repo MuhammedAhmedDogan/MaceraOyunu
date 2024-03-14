@@ -1,7 +1,8 @@
 package enemies;
 
 public class Obstacle {
-    private int id, damage, health, startHealth, money;
+    private int id, health, startHealth, money;
+    public int damage;
     private String name;
 
     public Obstacle(int id, String name, int damage, int health, int money) {
@@ -14,7 +15,7 @@ public class Obstacle {
     }
 
     public void printInfo() {
-        System.out.println("Hasar: " + this.getDamage() + "\tSağlık: " + this.getHealth() + "\tPara: " + this.getMoney()+"\n");
+        System.out.println("Hasar: " + this.getDamage() + "\tSağlık: " + this.getHealth() + "\tPara: " + this.getMoney() + "\n");
     }
 
     public int getId() {

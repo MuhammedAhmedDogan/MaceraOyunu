@@ -56,7 +56,7 @@ public class Game {
                         location = locationList[1];
                         break;
                     case 3:
-                        if (player.isFood()) {
+                        if (player.getInventory().isFood()) {
                             System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
                             validInput = false;
                         } else {
@@ -64,7 +64,7 @@ public class Game {
                         }
                         break;
                     case 4:
-                        if (player.isFirewood()) {
+                        if (player.getInventory().isFirewood()) {
                             System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
                             validInput = false;
                         } else {
@@ -72,7 +72,7 @@ public class Game {
                         }
                         break;
                     case 5:
-                        if (player.isWater()) {
+                        if (player.getInventory().isWater()) {
                             System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
                             validInput = false;
                         } else {
@@ -80,7 +80,7 @@ public class Game {
                         }
                         break;
                     case 6:
-                        if (player.isTrophy()) {
+                        if (player.getInventory().isTrophy()) {
                             System.out.println("------------ Bu bölgeyi daha önce temizlediniz ------------");
                             validInput = false;
                         } else {

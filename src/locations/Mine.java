@@ -3,16 +3,14 @@ package locations;
 import enemies.*;
 import player.*;
 
-import java.util.Random;
-
 public class Mine extends BattleLocation {
     public Mine(Player player) {
         super(6, player, "Maden", "    :\tYılan yuvası", new Snake(), "Ödül: Her öldürülen yılandan Silah, Zırh veya Para düşebilir", 5);
-        setDamage();
+        //setDamage();
     }
 
-    public void setDamage() {
+    /*public void setDamage() {
         Random random = new Random();
         this.getObstacle().setDamage (random.nextInt(4) + 3);
-    }
+    }*/
 }

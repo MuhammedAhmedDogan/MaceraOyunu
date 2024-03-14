@@ -10,10 +10,6 @@ public class Player {
     private String name, charName;
     private Inventory inventory;
     private final Scanner input = new Scanner(System.in);
-    private boolean food = false;
-    private boolean firewood = false;
-    private boolean water = false;
-    private boolean trophy = false;
 
     public Player(String name) {
         this.name = name;
@@ -147,35 +143,4 @@ public class Player {
         this.startHealth = startHealth;
     }
 
-    public boolean isFirewood() {
-        return firewood;
-    }
-
-    public void setFirewood(boolean firewood) {
-        this.firewood = firewood;
-    }
-
-    public boolean isWater() {
-        return water;
-    }
-
-    public void setWater(boolean water) {
-        this.water = water;
-    }
-
-    public boolean isFood() {
-        return food;
-    }
-
-    public void setFood(boolean food) {
-        this.food = food;
-    }
-
-    public boolean isTrophy() {
-        return trophy;
-    }
-
-    public void setTrophy(boolean trophy) {
-        this.trophy = trophy;
-    }
 }
