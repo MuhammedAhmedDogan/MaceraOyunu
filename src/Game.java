@@ -17,8 +17,13 @@ public class Game {
             this.selectLocation();
 
             if (!location.onLocation()) {
-                System.out.println("\n############### GAME OVER ###############\n");
-                break;
+                if (player.getHealth()==0){
+                    System.out.println("\n############### GAME OVER ###############\n");
+                    break;
+                } else {
+                    System.out.println("############### OYUNU BAŞARIYLA TAMAMLADINIZ ###############");
+                    break;
+                }
             }
         }
     }
@@ -32,6 +37,9 @@ public class Game {
     }
 
     private void selectLocation() {
+        if (player.getInventory().isFood() && player.getInventory().isFirewood() && player.getInventory().isWater()) {
+            System.out.println("BÜTÜN MALZEMELERİ TOPLADINIZ OYUNU BİTİRMEK İÇİN GÜVENLİ EVE DÖNEBİLİRSİNİZ");
+        }
         System.out.println("############### BÖLGELER ###############");
         for (Location printLocation : locationList) {
             System.out.println(printLocation.getId() +

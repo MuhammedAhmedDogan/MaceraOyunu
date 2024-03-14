@@ -8,9 +8,14 @@ public class SafeHouse extends NormalLoc {
 
     @Override
     public boolean onLocation() {
-        System.out.println("\nGüvenli evdesiniz.");
-        System.out.println("Sağlığınız yenilendi.");
-        this.getPlayer().setHealth(this.getPlayer().getStartHealth());
-        return true;
+        if (this.getPlayer().getInventory().isFood()&&this.getPlayer().getInventory().isFirewood()&&this.getPlayer().getInventory().isWater()){
+            System.out.println("*** Yemek, Odun ve Su toplayarak Güvenli Eve döndünüz ***");
+            return false;
+        }else{
+            System.out.println("\nGüvenli evdesiniz.");
+            System.out.println("Sağlığınız yenilendi.");
+            this.getPlayer().setHealth(this.getPlayer().getStartHealth());
+            return true;
+        }
     }
 }
