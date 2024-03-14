@@ -144,6 +144,7 @@ public abstract class BattleLocation extends Location {
             double chanceWeapon = random.nextDouble()*100;
             if (chanceWeapon<20){
                 System.out.println("---- Düşmandan Tüfek çıktı ----");
+                this.getPlayer().getInventory().setWeapon(Weapon.getWeaponObjID(3)); // EN SON BURA YAZILDI.
             } else if (chanceWeapon<50) {
                 System.out.println("---- Düşmandan Kılıç çıktı ----");
             }else {
