@@ -27,7 +27,9 @@ public abstract class BattleLocation extends Location {
             String selectCase = input.nextLine().toUpperCase();
             if (selectCase.equals("S")) {
                 if (this.combat(obsNumber)) {
+                    System.out.println("--------------------------------------");
                     System.out.println(this.getName() + " bölgesindeki tüm düşmanları yendiniz");
+                    System.out.println("--------------------------------------");
                     return true;
                 } else {
                     if (this.getPlayer().getHealth() == 0) {
@@ -91,7 +93,7 @@ public abstract class BattleLocation extends Location {
     }
 
     public void playerStats(int i) {
-        System.out.println("Oyuncu değerleri:");
+        System.out.println("\nOyuncu değerleri:");
         this.getPlayer().printInfo();
         System.out.println("----------------------------");
         System.out.println(i + ". " + this.getObstacle().getName() + " değerleri:");

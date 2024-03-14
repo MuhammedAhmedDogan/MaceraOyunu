@@ -14,7 +14,7 @@ public class Obstacle {
     }
 
     public void printInfo() {
-        System.out.println("\nHasar: " + this.getDamage() + "\tSağlık: " + this.getHealth() + "\tPara: " + this.getMoney());
+        System.out.println("Hasar: " + this.getDamage() + "\tSağlık: " + this.getHealth() + "\tPara: " + this.getMoney()+"\n");
     }
 
     public int getId() {

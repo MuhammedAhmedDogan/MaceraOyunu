@@ -6,7 +6,7 @@ import items.*;
 import java.util.Scanner;
 
 public class Player {
-    private int damage, health, money;
+    private int damage, health,startHealth, money;
     private String name, charName;
     private Inventory inventory;
     private final Scanner input = new Scanner(System.in);
@@ -67,12 +67,13 @@ public class Player {
     private void initPlayer(GameChar gameChar) {
         this.setDamage(gameChar.getDamage());
         this.setHealth(gameChar.getHealth());
+        this.setStartHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
         this.setCharName(gameChar.getName());
     }
 
     public void printInfo() {
-        System.out.println("\nSilah: " + this.getInventory().getWeapon().getName() +
+        System.out.println("Silah: " + this.getInventory().getWeapon().getName() +
                 "\tZırh: "+this.getInventory().getArmor().getName()+
                 "\t\tHasar: " + this.getTotalDamage() +
                 "\t  Bloklama: "+this.getInventory().getArmor().getBlock()+
@@ -130,5 +131,13 @@ public class Player {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public int getStartHealth() {
+        return startHealth;
+    }
+
+    public void setStartHealth(int startHealth) {
+        this.startHealth = startHealth;
     }
 }
