@@ -18,7 +18,7 @@ public class Game {
 
             if (!location.onLocation()) {
                 if (player.getHealth()==0){
-                    System.out.println("\n############### GAME OVER ###############\n");
+                    System.out.println("############### GAME OVER ###############\n");
                     break;
                 } else {
                     System.out.println("############### OYUNU BAŞARIYLA TAMAMLADINIZ ###############");

@@ -55,7 +55,7 @@ public abstract class BattleLocation extends Location {
                     return true;
                 } else {
                     if (this.getPlayer().getHealth() == 0) {
-                        System.out.println("*** ÖLDÜNÜZ *** ");
+                        System.out.println("\n*** ÖLDÜNÜZ *** ");
                         return false;
                     } else {
                         return true;
